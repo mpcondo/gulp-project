@@ -28,7 +28,7 @@ function scssTask() {
 }
 
 //JS TASK
-//concat and minify js files
+//concat and minify js files, adds minified js to dist folder
 function jsTask() {
   return src(files.jsPath)
     .pipe(concat("all.js"))
@@ -38,6 +38,8 @@ function jsTask() {
 
 //CACHE BUSTING
 //clears cache when css & js changes are made
+///"cacheBusting" attribute is added to stylesheet link, and script link in index.html
+///to track changes by milliseonds of the time file is saved.
 cacheBustingString = new Date().getTime();
 function cacheBustingTask() {
   return src(["index.html"])
